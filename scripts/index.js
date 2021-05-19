@@ -28,7 +28,7 @@ const getPrediction = async (image) => {
     image = prepareImage(image)
 
     // Send POST request
-    const response = await fetch('https://20.82.185.23:4242/api/predict-webcam', {
+    const response = await fetch('https://symposium-demo.northeurope.cloudapp.azure.com/demo/api/predict-webcam', {
         method: 'POST',
         body: JSON.stringify({"image": image, "model_path": "data/models/resnet_18_epoch_153_acc_93.53.pth"})
     })
