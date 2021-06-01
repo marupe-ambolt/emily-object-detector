@@ -28,14 +28,18 @@ const getPrediction = async (image) => {
     image = prepareImage(image)
 
     // Send POST request
-    const response = await fetch('https://symposium-demo.northeurope.cloudapp.azure.com/demo/api/predict-webcam', {
+    // const response = await fetch('https://symposium-demo.northeurope.cloudapp.azure.com/demo/api/predict-webcam', {
+    const response = await fetch('http://localhost:4242/api/predict-webcam', {
+
         method: 'POST',
         body: JSON.stringify({"image": image, "model_path": "data/models/resnet_18_epoch_153_acc_93.53.pth"})
     })
     const responseBody = await response.json()
 
     console.log("Prediction: " + responseBody.prediction)
-    return responseBody.prediction >= 50
+    if (responseBody.prediction < 50) return 0
+    if (responseBody.prediction < 85) return 1
+    else return 2
 }
 
 const beginDetectionLoop = async () => {
@@ -52,14 +56,22 @@ const beginDetectionLoop = async () => {
             continue
 
         loadingIcon.classList.add('disabled')
-        if (hasMask) {
+        if (hasMask == 2) {
             webcamFeed.classList.remove('warn')
             statusMessage.classList.remove('warn')
             webcamFeed.classList.add('success')
             statusMessage.classList.add('success')
 
             statusMessage.innerHTML = '✓ Mask found!'
-        } else {
+        } 
+        else if(hasMask == 1){
+            webcamFeed.classList.remove('success')
+            statusMessage.classList.remove('success')
+            webcamFeed.classList.add('warn')
+            statusMessage.classList.add('warn')
+            statusMessage.innerHTML = '¯\\_(ツ)_/¯ not sure'
+        }
+        else {
             webcamFeed.classList.remove('success')
             statusMessage.classList.remove('success')
             webcamFeed.classList.add('warn')
