@@ -69,7 +69,7 @@ const beginDetectionLoop = async () => {
             statusMessage.classList.remove('success')
             webcamFeed.classList.add('warn')
             statusMessage.classList.add('warn')
-            statusMessage.innerHTML = '¯\\_(ツ)_/¯ not sure'
+            statusMessage.innerHTML = '? not sure'
         }
         else {
             webcamFeed.classList.remove('success')
