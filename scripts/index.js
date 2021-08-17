@@ -28,7 +28,7 @@ const getPrediction = async (image) => {
     image = prepareImage(image)
 
     // Send POST request
-    const response = await fetch('https://symposium-demo.northeurope.cloudapp.azure.com/facemask-detector/api/predict-webcam', {
+    const response = await fetch('https://symposium-demo.northeurope.cloudapp.azure.com/object-detector/api/object-detection', {
     // const response = await fetch('http://localhost:4242/api/predict-webcam', {
 
         method: 'POST',
