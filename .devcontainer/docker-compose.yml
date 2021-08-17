@@ -1,0 +1,6 @@
+
+version: "3"
+services:
+  emily-yolov5-client-xfjp1q:
+    command: /bin/sh -c "while sleep 1000; do :; done"
+

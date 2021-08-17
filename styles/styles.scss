@@ -58,10 +58,16 @@ body, html {
         width: 50%;
         align-items: center;
         justify-content: center;
+
+        #image {
+          border-radius: 2em;
+          border: solid black 3px;
+        }
         
         .webcam-feed {
             border-radius: 2em;
             border: solid black 3px;
+            visibility: hidden;
 
             &.success {
                 border: solid $success 3px;

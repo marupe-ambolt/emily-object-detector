@@ -101,9 +101,15 @@ body, html {
           justify-content: center;
 }
 
+.main .webcam #image {
+  border-radius: 2em;
+  border: solid black 3px;
+}
+
 .main .webcam .webcam-feed {
   border-radius: 2em;
   border: solid black 3px;
+  visibility: hidden;
 }
 
 .main .webcam .webcam-feed.success {
